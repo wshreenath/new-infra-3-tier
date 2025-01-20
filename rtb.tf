@@ -52,7 +52,6 @@ resource "aws_route_table_association" "swiggy-rt-as-6" {
 
 # Create an Elastic IP address for the NAT Gateway
 resource "aws_eip" "swiggy-nat-eip" {
-  vpc    = true
   domain = "vpc" 
   tags = {
     Name = "swiggy-nat-eip"

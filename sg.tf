@@ -41,7 +41,6 @@ resource "aws_security_group" "swiggy-db-sg" {
     from_port   = 3306 # MySQL/Aurora port
     to_port     = 3306
     protocol    = "tcp"
-    security_groups = [aws_security_group.swiggy-db-sg.id] 
   }
 
   egress {

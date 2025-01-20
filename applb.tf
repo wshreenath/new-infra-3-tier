@@ -42,10 +42,3 @@ resource "aws_lb_listener" "swiggy-web-lb-listner" {
   }
 }
 
-# Register the instances with the target group - web tier
-resource "aws_autoscaling_attachment" "swiggy-web-asattach" {
-  autoscaling_group_name = aws_autoscaling_group.swiggy-web-asg.name
-  alb_target_group_arn   = lb_target_group_arn
-  
-}
-
