@@ -11,7 +11,7 @@ resource "aws_autoscaling_group" "swiggy-web-asg" {
 ###### Create a launch configuration for the EC2 instances #####
 resource "aws_launch_configuration" "swiggy-web-lconfig" {
   name_prefix                 = "swiggy-web-lconfig"
-  image_id                    = "ami-0ed194d7eff6d2f81 "
+  image_id                    = "ami-0ed194d7eff6d2f81"
   instance_type               = "t2.micro"
   key_name                    = "devopsbyraham"
   security_groups             = [aws_security_group.swiggy-ec2-asg-sg.id]
