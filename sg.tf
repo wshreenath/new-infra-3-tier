@@ -76,8 +76,8 @@ resource "aws_security_group" "swiggy-alb-sg-1" {
   vpc_id      = aws_vpc.swiggy-vpc.id
 
   ingress {
-    from_port   = 8080 # HTTP
-    to_port     = 8080
+    from_port   = 80 # HTTP
+    to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
