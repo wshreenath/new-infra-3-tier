@@ -1,8 +1,8 @@
 # Public Subnets 
 resource "aws_subnet" "swiggy-pub-sub-1" {
-  vpc_id            = aws_vpc.swiggy-vpc.id
-  cidr_block        = "10.0.0.0/28"
-  availability_zone = "ap-south-1a"
+  vpc_id                  = aws_vpc.swiggy-vpc.id
+  cidr_block              = "10.0.0.0/28"
+  availability_zone       = "ap-south-1a"
   map_public_ip_on_launch = "true"
 
   tags = {
@@ -11,9 +11,9 @@ resource "aws_subnet" "swiggy-pub-sub-1" {
 }
 
 resource "aws_subnet" "swiggy-pub-sub-2" {
-  vpc_id            = aws_vpc.swiggy-vpc.id
-  cidr_block        = "10.0.0.16/28"
-  availability_zone = "ap-south-1b"
+  vpc_id                  = aws_vpc.swiggy-vpc.id
+  cidr_block              = "10.0.0.16/28"
+  availability_zone       = "ap-south-1b"
   map_public_ip_on_launch = "true"
   tags = {
     Name = "swiggy-pub-sub-2"

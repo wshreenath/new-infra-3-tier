@@ -18,6 +18,13 @@ resource "aws_security_group" "swiggy-ec2-asg-sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
@@ -38,9 +45,16 @@ resource "aws_security_group" "swiggy-db-sg" {
   vpc_id      = aws_vpc.swiggy-vpc.id
 
   ingress {
-    from_port   = 3306 # MySQL/Aurora port
-    to_port     = 3306
+    from_port = 3306 # MySQL/Aurora port
+    to_port   = 3306
+    protocol  = "tcp"
+  }
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
     protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
@@ -59,11 +73,11 @@ resource "aws_security_group" "swiggy-db-sg" {
 resource "aws_security_group" "swiggy-alb-sg-1" {
   name        = "swiggy-alb-sg-1"
   description = "Security group for Swiggy Application Load Balancer"
-  vpc_id      = aws_vpc.swiggy-vpc.id 
+  vpc_id      = aws_vpc.swiggy-vpc.id
 
   ingress {
-    from_port   = 80 # HTTP
-    to_port     = 80
+    from_port   = 8080 # HTTP
+    to_port     = 8080
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -71,6 +85,13 @@ resource "aws_security_group" "swiggy-alb-sg-1" {
   ingress {
     from_port   = 443 # HTTPS
     to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
